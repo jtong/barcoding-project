@@ -14,7 +14,7 @@ public class TransferToZipCodingCommand implements Command {
     @Override
     public String execute(String param, Router router) {
         router.setAcceptableCommands(Arrays.asList(zipCodingCommand));
-        return "Please input bar code:";
+        return "Please input bar code. \n";
     }
 
     @Override

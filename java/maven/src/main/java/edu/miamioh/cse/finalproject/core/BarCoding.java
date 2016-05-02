@@ -85,15 +85,24 @@ public class BarCoding {
     }
 
     public  String computeCD(List<String> zipCodeList) {
+        List<Integer> zipCodeListInteger = new ArrayList<Integer>();
+        for (int i = 0; i < zipCodeList.size(); i++) {
+            zipCodeListInteger.add(Integer.valueOf(zipCodeList.get(i)));
+        }
+        return computeCDInteger(zipCodeListInteger).toString();
+    }
+
+    public Integer computeCDInteger(List<Integer> zipCodeList){
         int summary = 0;
         for (int i = 0; i < zipCodeList.size(); i++) {
-            summary += Integer.valueOf(zipCodeList.get(i));
+            summary += zipCodeList.get(i);
         }
         int modTenLeft = summary % 10;
         if(modTenLeft == 0){
-            return "0";
+            return 0;
         }
-        return String.valueOf(10-modTenLeft);
+        return 10 - modTenLeft;
+
     }
     
 }

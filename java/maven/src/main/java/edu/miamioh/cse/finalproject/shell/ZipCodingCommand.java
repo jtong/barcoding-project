@@ -1,5 +1,6 @@
 package edu.miamioh.cse.finalproject.shell;
 
+import edu.miamioh.cse.finalproject.core.TranslateMessage;
 import edu.miamioh.cse.finalproject.core.ZipCoding;
 import edu.miamioh.cse.finalproject.shell.Command;
 import edu.miamioh.cse.finalproject.shell.Router;
@@ -13,7 +14,11 @@ public class ZipCodingCommand implements Command {
 
     @Override
     public String execute(String param, Router router) {
-        return null;
+        TranslateMessage translateMessage = zipCoding.toZipCode(param);
+        if (translateMessage.getSuccess()) {
+            return translateMessage.getMessage() + "\n" + router.start();
+        }
+        return translateMessage.getMessage();
     }
 
     @Override
